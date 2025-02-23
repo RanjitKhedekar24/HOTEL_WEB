@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Room Booking</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body style="background-image: url('assets/room-2.jpg');">
+    <div class="header" align="center">
+        <h1>KOTACHI WADI BEACH RESORT</h1>
+    </div>
+    <form id="booking-form" action="connect.php" method="post" onsubmit="return logFormData()">
+        <label for="checkin-date">Check-in Date:</label>
+        <input type="date" id="checkin-date" name="checkin" required><br><br>
+        
+        <label for="checkout-date">Check-out Date:</label>
+        <input type="date" id="checkout-date" name="checkout" required><br><br>
+        
+        <label for="room-type">Room Type:</label>
+        <select id="room-type" name="RT" required>
+            <option value="">Select Room Type</option>
+            <option value="single-ac">Single AC</option>
+            <option value="single-non-ac">Single Non-AC</option>
+            <option value="double-ac">Double AC</option>
+            <option value="double-non-ac">Double Non-AC</option>
+        </select><br><br>
+        
+        <label for="num-guests">Number of Guests:</label>
+        <input type="number" id="num-guests" name="NOG" required min="1"><br><br>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="Name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="aadhar">12 Digit Aadhar No:</label>
+        <input type="text" id="aadhar" name="aadhar" required pattern="\d{12}" title="Please enter a 12 digit Aadhar number."><br><br>
+        
+        <button type="submit">Book Room</button>
+    </form>
+    
+    <div id="booking-response"></div>
+    
+    <script>
+    function logFormData() {
+        const formData = new FormData(document.getElementById('booking-form'));
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+        return true; // Allow form submission
+    }
+    </script>
+</body>
+</html>
